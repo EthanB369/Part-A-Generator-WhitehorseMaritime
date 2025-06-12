@@ -122,8 +122,9 @@ def format_question(q, number):
         options_text += f"{chr(65+i)}: {opt}<br>"
 
     return (
-        f"<b>Question {number}</b> (<i>ID #{q['id']}</i>):<br>"
-        f"{q['question']}<br><br>"
+        f"<b>Question {number}</b> <span class='meta'>(ID #{q['id']})</span>"
+
+        f"<span class='main-text'>{q['question']}</span><br>"
         f"{options_text}<br>"
         "Please choose either A, B, C, or D."
     )

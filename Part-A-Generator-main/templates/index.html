@@ -11,13 +11,22 @@
 <body>
   <div id="chat-container">
     <div id="chat-box"></div>
-    <div id="input-container">
+    <form id="input-container" autocomplete="off">
       <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
-      <button id="send-button">Send</button>
+      <button id="send-button" type="submit">Send</button>
+    </form>
+    <div class="gpt-footer">
+      This GPT can make mistakes. Contact <a href="mailto:support@ethanbrining.com">support@ethanbrining.com</a> with the question ID.
+      Made by Ethan Brining. All rights reserved. &copy; 2025
     </div>
   </div>
 
+
   <!-- Load JS once -->
-  <script src="{{ url_for('static', filename='script.js') }}?v=3"></script> <!-- Force refresh cache -->
+  <script src="{{ url_for('static', filename='script.js') }}?v=3"></script>
+  </body>
+
+
 </body>
+
 </html>

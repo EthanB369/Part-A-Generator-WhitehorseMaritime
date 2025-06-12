@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const chatBox = document.getElementById("chat-box");
   const userInput = document.getElementById("user-input");
   const sendButton = document.getElementById("send-button");
+  const inputForm = document.getElementById("input-container");
 
   function appendMessage(message, sender) {
-    console.log("SENDER:", sender);  // 👈 add this
     const messageElement = document.createElement("div");
     messageElement.classList.add(sender === "user" ? "user-message" : "bot-message");
     messageElement.innerHTML = message;
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     appendMessage(text, "user");
     userInput.value = "";
-
     fetch("/chat", {
       method: "POST",
       body: JSON.stringify({ message: text }),
@@ -31,25 +30,25 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(response => response.json())
     .then(data => {
-      appendMessage(data.reply, "bot"); // First show feedback
-    
+      appendMessage(data.reply, "bot");
       if (data.next) {
         setTimeout(() => {
-          appendMessage(data.next, "bot"); // After delay, show next question
-        }, 750); // 500ms or 1s up to you
-      } 
-    
+          appendMessage(data.next, "bot");
+        }, 750);
+      }
     });
-    
   }
-  sendButton.addEventListener("click", sendUserMessage);
-  userInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") sendUserMessage();
+
+  // 🔵 This should be OUTSIDE of appendMessage!
+  inputForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendUserMessage();
   });
 
-// 👇 Send an initial welcome message automatically
-window.addEventListener("load", () => {
-  appendMessage("👋 Hi, I'm your Part A Mock Exam Generator! 🎓<br>Type <b>Start</b> to begin your mock exam! 🧠", "bot");
-});
+  sendButton.addEventListener("click", sendUserMessage);
 
+  // Optional: welcome message
+  window.addEventListener("load", () => {
+    appendMessage("👋 Hi, I'm your Part A Mock Exam Generator! 🎓<br>Type <b>Start</b> to begin your mock exam! 🧠", "bot");
+  });
 });
