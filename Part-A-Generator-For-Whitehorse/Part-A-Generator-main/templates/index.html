@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Part A Generator</title>
+
+  <!-- Load CSS once -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div id="chat-container">
+    <div id="chat-box"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <!-- Load JS once -->
+  <script src="{{ url_for('static', filename='script.js') }}?v=3"></script> <!-- Force refresh cache -->
+</body>
+</html>
