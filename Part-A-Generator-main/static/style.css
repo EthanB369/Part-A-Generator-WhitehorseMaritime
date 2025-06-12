@@ -6,19 +6,19 @@ body {
   font-family: 'Figtree', sans-serif;
   color: white;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Chat container */
 #chat-container {
   background: none;
-  width: 90%;
-  max-width: 700px;
-  height: 90vh;
+  width: 95%;
+  height: 95%;
+  padding: 40px; 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Chat box */

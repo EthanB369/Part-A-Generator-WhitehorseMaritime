@@ -6,7 +6,13 @@ import os
 app = Flask(__name__)
 
 # Load question bank
-with open("questions.json", "r") as file:
+import os
+
+base_dir = os.path.dirname(__file__)
+json_path = os.path.join(base_dir, "questions.json")
+
+with open(json_path, "r") as file:
+
     QUESTION_BANK = json.load(file)
 
 # Memory

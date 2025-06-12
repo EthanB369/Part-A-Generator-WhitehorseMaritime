@@ -1,0 +1,14 @@
+language = "python3"
+modules = ["python-3.11"]
+
+run = ["python3", "Part-A-Generator-main/main.py"]
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["python3", "Part-A-Generator-main/main.py"]
+
+[[ports]]
+localPort = 10000
+externalPort = 80
