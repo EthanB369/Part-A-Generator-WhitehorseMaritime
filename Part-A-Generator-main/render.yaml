@@ -2,6 +2,6 @@ services:
 - type: web
   name: part-a-generator
   env: python
-  buildCommand: "pip install -r requirements.txt"
-  startCommand: "gunicorn main:app"
+  buildCommand: "pip install -r Part-A-Generator-main/requirements.txt"
+  startCommand: "cd Part-A-Generator-main && gunicorn main:app --host 0.0.0.0 --port $PORT"
   plan: free
