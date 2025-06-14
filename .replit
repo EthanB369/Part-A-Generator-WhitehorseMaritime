@@ -12,3 +12,15 @@ run = ["python3", "Part-A-Generator-main/main.py"]
 [[ports]]
 localPort = 10000
 externalPort = 80
+
+[workflows]
+runButton = "Run Flask App"
+
+[[workflows.workflow]]
+name = "Run Flask App"
+author = 41482505
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd Part-A-Generator-main && python3 main.py"
